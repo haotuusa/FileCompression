@@ -1,5 +1,5 @@
 <snippet>
-  <content><![CDATA[
+  <content>
 # Huffman_Compression
 
 ## Purpose: 
@@ -30,6 +30,6 @@ Using Huffman algorithm to compress different file type depending on option flag
 5. For text file, write back the string to text file with an additional x at the end of file name (etc. test.txt -> testx.txt)
 6. For other file type, we convert base 64 string back to byte array and write to the file with original extention and additional x at the end of file name (etc. test.mp4 ->testx.mp4)
 
-]]></content>
+</content>
   <tabTrigger>readme</tabTrigger>
 </snippet>
