@@ -2,14 +2,15 @@
   <content><![CDATA[
 # Huffman_Compression
 
-## Purpose: Using Huffman algorithm to compress different file type depending on option flag (txt, jpg, png, mp3, mp4) in Java. Implementing Huffman library for building tree and common-codec additional library for converting all file type to base 64 string.
+## Purpose: 
+Using Huffman algorithm to compress different file type depending on option flag (txt, jpg, png, mp3, mp4) in Java. Implementing Huffman library for building tree and common-codec additional library for converting all file type to base 64 string.
 
 ## Result:
-txt: 50 to 60 compression rate depending on the file size.
-jpg: In progress
-png: In progress
-mp3: In progress
-mp4: In progress
+* txt: 50 to 60 compression rate depending on the file size
+* jpg: In progress
+* png: In progress
+* mp3: In progress
+* mp4: In progress
 
 ## Algorithm:
 ### Compress mode (without -d flag)
