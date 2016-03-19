@@ -1,6 +1,6 @@
 <snippet>
   <content>
-# Huffman_Compression
+# FileCompression
 
 ## Purpose: 
 Using Huffman algorithm to compress different file type depending on option flag (txt, jpg, png, mp3, mp4) in Java. Implementing Huffman library for building tree and common-codec additional library for converting all file type to base 64 string.
