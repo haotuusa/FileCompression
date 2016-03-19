@@ -31,5 +31,5 @@ Using Huffman algorithm to compress different file type depending on option flag
 6. For other file type, we convert base 64 string back to byte array and write to the file with original extention and additional x at the end of file name (etc. test.mp4 ->testx.mp4)
 
 </content>
-  <tabTrigger>readme</tabTrigger>
+  <tabTrigger></tabTrigger>
 </snippet>
