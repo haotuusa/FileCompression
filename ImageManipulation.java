@@ -11,76 +11,95 @@ import org.apache.commons.codec.binary.Base64;
  */
 public class ImageManipulation {
  
-    // String fileName;
-    String imageDataString;
+    public static void main(String[] args) {
 
-    public ImageManipulation(){}
-
-    public void convertToString(String fileName) {
+        if(args[0].substring(0,2).toLowerCase().equals("-d"))
+        {
+            writeOriginalFile(args[1]);
+        }
+        else
+        {
+            writeTextFile(args[0]);
+        }
+    }
  
-        File file = new File(fileName);
- 
-        try {            
+    private static void writeTextFile(String fileName)
+    {
+        try { 
+            File file = new File(fileName);
             // Reading a Image file from file system
             FileInputStream imageInFile = new FileInputStream(file);
             byte imageData[] = new byte[(int) file.length()];
             imageInFile.read(imageData);
- 
+
             // Converting Image byte array into Base64 String
-            imageDataString = encodeImage(imageData);
- 
-            /* TEST ------------------------------- */
+            String imageDataString = encodeImage(imageData);
+
             FileOutputStream txtOutFile = new FileOutputStream(
                     "convert.txt");
             OutputStreamWriter fwriter = new OutputStreamWriter(txtOutFile);
             // InputStreamReader freader = new InputStreamReader(stream, "UTF-16");
             BufferedWriter outputfile = new BufferedWriter(fwriter);
-            outputfile.write(imageDataString);
-            txtOutFile.close();
-            /* ------------------------------- */
 
+            outputfile.write(imageDataString);
             imageInFile.close();
 
-
-
- 
-            System.out.println("Image Successfully Manipulated!");
-        } 
-        catch (FileNotFoundException e) {
-            System.out.println("Image not found" + e);
-        } 
-        catch (IOException ioe) {
-            System.out.println("Exception while reading the Image " + ioe);
+            System.out.println("File successfully convert to text file!");
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found" + e);
+        } catch (IOException ioe) {
+            System.out.println("Exception while reading the file " + ioe);
         }
     }
 
-    public void convertToImage(String imageDataString) {
 
-        // Converting a Base64 String into Image byte array
-        byte[] imageByteArray = decodeImage(imageDataString);
+    private static void writeOriginalFile(String fileName)
+    {
+        try { 
+            File file = new File(fileName);
+            FileInputStream txtInFile = new FileInputStream(file);
+            InputStreamReader freader = new InputStreamReader(txtInFile);
+            // InputStreamReader freader = new InputStreamReader(stream, "UTF-16");
+            BufferedReader inputFile = new BufferedReader(freader);
 
-        // Write a image byte array into file system
-        FileOutputStream imageOutFile = new FileOutputStream(
-            "convert.jpg");
+            StringBuffer stringBuffer = new StringBuffer();
+            String line = null;
+                
+            while((line = inputFile.readLine())!= null) {
+            
+                stringBuffer.append(line).append("\n");
+            }
+               
+            String imageDataString = stringBuffer.toString();
 
-        imageOutFile.write(imageByteArray);
+
+            // Converting a Base64 String into Image byte array
+            byte[] imageByteArray = decodeImage(imageDataString);
+
+            // Write a image byte array into file system
+            FileOutputStream imageOutFile = new FileOutputStream(
+                    "convert.mp4");
+
+            imageOutFile.write(imageByteArray);
 
 
-        imageOutFile.close();
+            imageOutFile.close();
+
+             System.out.println("File successfully recover!");
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found" + e);
+        } catch (IOException ioe) {
+            System.out.println("Exception while reading the text file " + ioe);
+        }
     }
 
-    public String getEncodeString() {
-        return 
-    }
-
- 
     /**
      * Encodes the byte array into base64 string
      *
      * @param imageByteArray - byte array
      * @return String a {@link java.lang.String}
      */
-    private String encodeImage(byte[] imageByteArray) {
+    public static String encodeImage(byte[] imageByteArray) {
         return Base64.encodeBase64URLSafeString(imageByteArray);
     }
  
@@ -90,7 +109,7 @@ public class ImageManipulation {
      * @param imageDataString - a {@link java.lang.String}
      * @return byte array
      */
-    private byte[] decodeImage(String imageDataString) {
+    public static byte[] decodeImage(String imageDataString) {
         return Base64.decodeBase64(imageDataString);
     }
 }

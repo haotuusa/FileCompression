@@ -31,7 +31,6 @@ public class Huffman
     private static File codFile;
     // for text file
     private static final int MAX_BYTE_SIZE_IN_BIT = 8;
-    // for unicode file
 
 
     /**
@@ -49,8 +48,6 @@ public class Huffman
         // JFileChooser
         boolean decode = false;
         
-
-
         //factor
         final double NANO_TO_SEC = 1000000000;
 
@@ -130,11 +127,11 @@ public class Huffman
                     System.exit(0); // exit the program is user chooses cancel
                 }
             }
-            
-            if (!file.canExecute())
-                 System.exit(0);
+            System.err.println("file can execute");
+            if (!file.canRead())
+                System.exit(0);
 
-
+            System.err.println("file after execute");
              // for tracking efficiency           
             double start_encode = (double) System.nanoTime();
             coder.encode(textFileName);
@@ -152,11 +149,13 @@ public class Huffman
      */
     public void encode(String fileName)
     {
+        // System.err.println("encode start");
         int huffmanCharSize = 0;
         // int[] charFrequency = new int[UNIMAX];
         int[] charFrequency = new int[CHARMAX];
         try
         {
+            // System.err.println("read file start");
             FileInputStream stream = new FileInputStream(fileName);
             InputStreamReader freader = new InputStreamReader(stream);
             // InputStreamReader freader = new InputStreamReader(stream, "UTF-16");
@@ -211,9 +210,6 @@ public class Huffman
               count++;
             }
         }
-
-
-
 
         // System.out.println("Before BubbleSort");
         bubbleSort(charCountArray); // sorts HuffmanChar array
