@@ -174,7 +174,7 @@ public class Huffman
                 line = "\n" + line;
                 for (char temp : line.toCharArray())
                 {   
-                    // System.out.println("Char UTF is: " + temp);
+                    System.out.println("int value is: " + (int)temp);
                     charFrequency[temp]++;
                 }
                 line = inputFile.readLine();

@@ -1,0 +1,9 @@
+*.class
+*.txt
+*.cod
+*.huf
+sample_output
+video*
+image*
+commons-codec-1.10/
+.DS_Store
