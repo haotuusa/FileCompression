@@ -7,3 +7,4 @@ video*
 image*
 commons-codec-1.10/
 .DS_Store
+*.html
